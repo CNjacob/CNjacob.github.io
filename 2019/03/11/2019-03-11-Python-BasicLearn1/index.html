@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="CNjacob, CNjacob Blog, 陈俊的博客, chenjun, 陈俊, iOS, Apple, iPhone">
+    <meta name="description" content="陈俊的博客 | CNjacob Blog">
+    <meta name="author" content="Jacob Chen">
+    
+    <title>
+        
+            Python学习-基础语法1 |
+        
+        Jacob&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"cnjacob.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Jacob&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Python学习-基础语法1</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jacob Chen</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2019-03-11 13:44:53
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <html><head></head><body><blockquote>
+<p>此文档未全部完成，将随时更新。</p>
+</blockquote>
+<h2 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1. 数据类型"></a>1. 数据类型</h2><blockquote>
+<p>Python常用的几种数据类型有数字、字符串、列表、字典和元组，其实Python内部的数据类型很多，但是我们常用的不多，太多了也记不了，掌握了常用的这几个数据类型即可。</p>
+</blockquote>
+<span id="more"></span>
+
+<h4 id="1-1-可变类型与不可变类型"><a href="#1-1-可变类型与不可变类型" class="headerlink" title="1.1 可变类型与不可变类型"></a>1.1 可变类型与不可变类型</h4><h5 id="1-1-1-不可变类型-数字、字符串、元组、不可变集合"><a href="#1-1-1-不可变类型-数字、字符串、元组、不可变集合" class="headerlink" title="1.1.1 不可变类型(数字、字符串、元组、不可变集合)"></a>1.1.1 不可变类型(数字、字符串、元组、不可变集合)</h5><blockquote>
+<p>不可变的类型是不支持修改原数据的，每次对不可变类型的数据进行修改时都是重新创建一个对象然后赋值给变量。</p>
+</blockquote>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = <span class="string">'as'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(s)</span><br><span class="line"><span class="number">4548424512</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s = s + <span class="string">',as'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(s)</span><br><span class="line"><span class="number">4548895720</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s</span><br><span class="line"><span class="string">'as,as'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-1-2-可变类型-列表、字典、可变集合"><a href="#1-1-2-可变类型-列表、字典、可变集合" class="headerlink" title="1.1.2 可变类型(列表、字典、可变集合)"></a>1.1.2 可变类型(列表、字典、可变集合)</h5><blockquote>
+<p>而可变类型是支持修改源数据，而不用重新创建新的对象</p>
+</blockquote>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>L = [<span class="number">1</span>,<span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L)</span><br><span class="line"><span class="number">4547584136</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L[<span class="number">0</span>] = <span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(L)</span><br><span class="line"><span class="number">4547584136</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>L</span><br><span class="line">[<span class="number">2</span>, <span class="number">2</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="1-2-数字数据类型"><a href="#1-2-数字数据类型" class="headerlink" title="1.2 数字数据类型"></a>1.2 数字数据类型</h4><blockquote>
+<p>在Python3中，整型、长整型、浮点数、负数、布尔值等都可以称之为数字类型。</p>
+</blockquote>
+<h5 id="1-2-1-创建数字类型类型的对象"><a href="#1-2-1-创建数字类型类型的对象" class="headerlink" title="1.2.1 创建数字类型类型的对象"></a>1.2.1 创建数字类型类型的对象</h5><p>第一种创建整型的方式:</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>number = <span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(number)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>第二种创建整型的方式:</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>number = <span class="built_in">int</span>(<span class="number">9</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(number)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>以上两种创建整型对象的方式都可以创建的，但是他们也是有本质上的区别，第一种方式实际上会转换成第二种方式，然后第二种方式会把括号内的数据交给__init__这个构造方法，构造方法是int类的，然后构造方法会在内存中开辟一块空间用来存放数据，但实际上我们在用时候是没有任何区别的。</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, x, base=<span class="number">10</span></span>):</span> <span class="comment"># known special case of int.__init__</span></span><br></pre></td></tr></tbody></table></figure>
+<p>可以从源码中看到，<code>__init__</code>的方法有两个参数，其中base=10是可选的参数，x是我们对象的值，base=10其实就是说把我们的值(默认二进制)以十进制的方式输出出来，通过下面的实例可以看到：</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>var = <span class="built_in">int</span>(<span class="string">'0b100'</span>,base=<span class="number">2</span>) </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var</span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></tbody></table></figure>
+<p>通过int()可以将一个数字的字符串变成一个整数，并且如果你指定了第二个参数，还可以将值进制数转换为整数：</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将数字字符串转换为整数，数字字符串通过进制转换为整数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">'99'</span>),<span class="built_in">int</span>(<span class="string">'100'</span>,<span class="number">8</span>),<span class="built_in">int</span>(<span class="string">'40'</span>,<span class="number">16</span>),<span class="built_in">int</span>(<span class="string">'10000000'</span>,<span class="number">2</span>)</span><br><span class="line">(<span class="number">99</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">128</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 讲进制数转换为整数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="string">'0x40'</span>,<span class="number">16</span>),<span class="built_in">int</span>(<span class="string">'0b1000000'</span>,<span class="number">2</span>)</span><br><span class="line">(<span class="number">64</span>, <span class="number">64</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>把二进制的数字4通过十进制输出出来，4的二进制就是0b100，又有一个知识点就是在类的方法中，所有以<code>__</code>开头，并且以<code>__</code>结尾的方法都是Python内部自己去调用的，我们在写代码的过程中是不需要去调用的，最简单的例子就是<code>__init__</code>，通过上面的流程图我们就可以很清楚的看到。</p>
+<h5 id="1-2-2-init内部优化机制"><a href="#1-2-2-init内部优化机制" class="headerlink" title="1.2.2 init内部优化机制"></a>1.2.2 init内部优化机制</h5><blockquote>
+<p>当两个或者多个对象的值都是同一个的时候，那么这些对象都会使用同一个内存地址，这里的值是是有范围的，默认范围是-5~257</p>
+</blockquote>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>var1 = <span class="number">12</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var2 = <span class="number">12</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(var1),<span class="built_in">id</span>(var2)</span><br><span class="line">(<span class="number">4545458672</span>, <span class="number">4545458672</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var2 = <span class="number">13</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(var1),<span class="built_in">id</span>(var2)</span><br><span class="line">(<span class="number">4545458672</span>, <span class="number">4545458704</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var1 = <span class="number">13</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(var1),<span class="built_in">id</span>(var2)</span><br><span class="line">(<span class="number">4545458704</span>, <span class="number">4545458704</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var1 = <span class="number">456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var2 = <span class="number">456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">id</span>(var1),<span class="built_in">id</span>(var2)</span><br><span class="line">(<span class="number">4548760880</span>, <span class="number">4548760688</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-2-3-数字类型的长度"><a href="#1-2-3-数字类型的长度" class="headerlink" title="1.2.3 数字类型的长度"></a>1.2.3 数字类型的长度</h5><blockquote>
+<p>数字类型在python2.7里面是分整型和长整型这个区别的，也就是说如果你的数字大到一定的范围，那么python会把它转换为长整形，一个数字类型包含32位，可以存储从-2147483648到214483647的整数。一个长整(long)型会占用更多的空间，64位的可以存储-922372036854775808到922372036854775808的整数。</p>
+</blockquote>
+<blockquote>
+<p>python3里long型已经不存在了，而int型可以存储到任意大小的整型，甚至超过64为。</p>
+</blockquote>
+<p>Python内部对整数的处理分为普通整数和长整数，普通整数长度为机器位长，通常都是32位，超过这个范围的整数就自动当长整数处理，而长整数的范围几乎完全没限制，如下：</p>
+<p>Python2.7.x</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>var = <span class="number">123456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var</span><br><span class="line"><span class="number">123456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var = <span class="number">10</span> ** <span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var</span><br><span class="line"><span class="number">100000000000000000000L</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(var) </span><br><span class="line"><span class="comment"># long就是长整型  </span></span><br><span class="line">&lt;<span class="built_in">type</span> <span class="string">'long'</span>&gt;</span><br></pre></td></tr></tbody></table></figure>
+<p>Python3.5.x</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>var = <span class="number">123456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var</span><br><span class="line"><span class="number">123456</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var = <span class="number">10</span> ** <span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>var</span><br><span class="line"><span class="number">100000000000000000000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">type</span>(var)</span><br><span class="line">&lt;<span class="class"><span class="keyword">class</span> '<span class="title">int</span>'&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-2-4-布尔类型-bool"><a href="#1-2-4-布尔类型-bool" class="headerlink" title="1.2.4 布尔类型(bool)"></a>1.2.4 布尔类型(bool)</h5><blockquote>
+<p>布尔类型其实就是数字0和1的变种而来，即真（True/1）或假（False/0），实际上就是内置的数字类型的子类而已。</p>
+</blockquote>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果0不是真，那么就输出'0 is False.'</span></span><br><span class="line"> <span class="keyword">if</span> <span class="keyword">not</span> <span class="number">0</span>: <span class="built_in">print</span>(<span class="string">'0 is False.'</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">0</span> <span class="keyword">is</span> <span class="literal">False</span>.</span><br><span class="line"><span class="comment"># 如果1是真，那么就输出'1 is True.'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">if</span> <span class="number">1</span>: <span class="built_in">print</span>(<span class="string">'1 is True.'</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="number">1</span> <span class="keyword">is</span> <span class="literal">True</span>.</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>你还可以使用布尔值进行加减法，虽然从来没在任何代码中见过这种形式：</p>
+</blockquote>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="literal">True</span> + <span class="number">1</span></span><br><span class="line"><span class="comment"># 1 + 1 = 2</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="literal">False</span> + <span class="number">1</span></span><br><span class="line"><span class="comment"># 0 + 1 = 1</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="1-3-字符串数据类型"><a href="#1-3-字符串数据类型" class="headerlink" title="1.3 字符串数据类型"></a>1.3 字符串数据类型</h4><h4 id="1-4-集合数据类型"><a href="#1-4-集合数据类型" class="headerlink" title="1.4 集合数据类型"></a>1.4 集合数据类型</h4><h4 id="1-5-列表数据类型"><a href="#1-5-列表数据类型" class="headerlink" title="1.5 列表数据类型"></a>1.5 列表数据类型</h4><h4 id="1-6-字典数据类型"><a href="#1-6-字典数据类型" class="headerlink" title="1.6 字典数据类型"></a>1.6 字典数据类型</h4><h4 id="1-7-元组数据类型"><a href="#1-7-元组数据类型" class="headerlink" title="1.7 元组数据类型"></a>1.7 元组数据类型</h4><h2 id="2-赋值与运算符"><a href="#2-赋值与运算符" class="headerlink" title="2. 赋值与运算符"></a>2. 赋值与运算符</h2><p>赋值与运算符</p>
+<h2 id="3-流程控制"><a href="#3-流程控制" class="headerlink" title="3. 流程控制"></a>3. 流程控制</h2><p>流程控制</p>
+<h2 id="4-深浅拷贝"><a href="#4-深浅拷贝" class="headerlink" title="4. 深浅拷贝"></a>4. 深浅拷贝</h2><p>深浅拷贝</p>
+<h2 id="5-函数"><a href="#5-函数" class="headerlink" title="5. 函数"></a>5. 函数</h2><p>函数</p>
+<h4 id="5-1-内置函数"><a href="#5-1-内置函数" class="headerlink" title="5.1 内置函数"></a>5.1 内置函数</h4><p>内置函数</p>
+<h4 id="5-2-模块默认全局变量"><a href="#5-2-模块默认全局变量" class="headerlink" title="5.2 模块默认全局变量"></a>5.2 模块默认全局变量</h4><p>模块默认全局变量</p>
+</body></html>
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/03/27/2019-03-27-iOS-LearnCocoapods/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Cocoapods安装及使用</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/03/11/2019-03-11-Notes-Hexo/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo简单使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jacob Chen</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="CNjacob, CNjacob Blog, 陈俊的博客, chenjun, 陈俊, iOS, Apple, iPhone">
+    <meta name="description" content="陈俊的博客 | CNjacob Blog">
+    <meta name="author" content="Jacob Chen">
+    
+    <title>
+        
+            使用cocoapods创建属于自己的公有库或私有库 |
+        
+        Jacob&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"cnjacob.com","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Jacob&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">使用cocoapods创建属于自己的公有库或私有库</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Jacob Chen</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2019-03-27 16:19:16
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/iOS/">iOS</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <html><head></head><body><blockquote>
+<p>最近总结了一下如何使用cocoapods管理自己的Pod库，文章简要说明了如何使用cocoapods创建属于自己的公有库或私有库。写得比较匆忙，有错的地方还请指正，我会及时修改</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-如何创建共有库"><a href="#1-如何创建共有库" class="headerlink" title="1. 如何创建共有库"></a>1. 如何创建共有库</h2><h3 id="1-1-注册Trunk"><a href="#1-1-注册Trunk" class="headerlink" title="1.1 注册Trunk"></a>1.1 注册Trunk</h3><h5 id="1-1-1-版本要求"><a href="#1-1-1-版本要求" class="headerlink" title="1.1.1 版本要求"></a>1.1.1 版本要求</h5><blockquote>
+<p>trunk需要CocoaPods 0.33版本以上，用 pod –version 命令查看版本</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod --version</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>我的CocoaPods是 1.6.0 版本<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/podVersion.png"></p>
+</blockquote>
+<blockquote>
+<p>如果版本低，需要升级</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gen install cocoapods</span><br><span class="line">pod setup</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-1-2-开始注册"><a href="#1-1-2-开始注册" class="headerlink" title="1.1.2 开始注册"></a>1.1.2 开始注册</h5><blockquote>
+<p><a class="link" href="mailto:15375187600@163.com">15375187600@163.com<i class="fas fa-external-link-alt"></i></a> 代表你的邮箱<br>‘CNjacob’ 代表你的用户名<br>–description=’macbook pro’ 描述性文字<br>–verbose可以输出详细debug信息，方便出错时查看</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register 15375187600@163.com 'CNjacob' --description='macbook pro' --verbose</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-1-3-查看注册信息"><a href="#1-1-3-查看注册信息" class="headerlink" title="1.1.3 查看注册信息"></a>1.1.3 查看注册信息</h5><blockquote>
+<p>通过 pod trunk me 命令查看自己是否注册过Trunk</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>我这里是已经注册过了的，其中包含你的name、email、since、Pods、sessions，Pods为你往CocoaPods提交的所有的Pod<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/trunkMe.png"></p>
+</blockquote>
+<h5 id="1-1-4-给项目添加其他维护者"><a href="#1-1-4-给项目添加其他维护者" class="headerlink" title="1.1.4 给项目添加其他维护者"></a>1.1.4 给项目添加其他维护者</h5><blockquote>
+<p>JacobBluetoothKit 为Pod项目名称<br><a class="link" href="mailto:mark.gu@163.com">mark.gu@163.com<i class="fas fa-external-link-alt"></i></a> 为维护者邮箱</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk add-owner JacobBluetoothKit mark.gu@163.com</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="1-2-创建自己的Pod"><a href="#1-2-创建自己的Pod" class="headerlink" title="1.2 创建自己的Pod"></a>1.2 创建自己的Pod</h3><h5 id="1-2-1-创建Pod"><a href="#1-2-1-创建Pod" class="headerlink" title="1.2.1 创建Pod"></a>1.2.1 创建Pod</h5><blockquote>
+<p>使用 pod lib create 引导过程来创建整个pod</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib create CNjacobBleManagerKit</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>进入引导过程<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/libCreate.png"></p>
+</blockquote>
+<blockquote>
+<p>整个引导过程有6步选择，如下图:<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/createLibGuide.png"></p>
+</blockquote>
+<blockquote>
+<p>1.选择系统版本，iOS / macOS</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">What platform do you want to use?? [ iOS / macOS ]</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> iOS</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>2.选择语言，[ Swift / ObjC ]</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">What language do you want to use?? [ Swift / ObjC ]</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> ObjC</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>3.制作演示应用程序，[ Yes / No ]</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Would you like to include a demo application with your library? [ Yes / No ]</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> Yes</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>4.选择测试框架，[ Specta / Kiwi / None ]</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Which testing frameworks will you use? [ Specta / Kiwi / None ]</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> Kiwi</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>5.基于视图的测试，[ Yes / No ]</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Would you like to do view based testing? [ Yes / No ]</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> No</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>6.类的前缀</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">What is your class prefix?</span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> CNjacob</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>创建完成后会自动打开Xcode工程<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/createSuccess.png"></p>
+</blockquote>
+<h5 id="1-2-2-podspec-文件配置"><a href="#1-2-2-podspec-文件配置" class="headerlink" title="1.2.2 .podspec 文件配置"></a>1.2.2 .podspec 文件配置</h5><blockquote>
+<p>可以通过 CNjacobBleManagerKit.podspec 文件来配置工程<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/settingPodspec.png"></p>
+</blockquote>
+<blockquote>
+<p>讲一下各项配置的含义</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">s.name                  名称，pod search 搜索的关键词,注意这里一定要和.podspec的名称一样,否则报错</span><br><span class="line">s.version               版本号</span><br><span class="line">s.summary               简介</span><br><span class="line"></span><br><span class="line">s.description           详细介绍</span><br><span class="line"></span><br><span class="line">s.homepage              项目主页地址</span><br><span class="line">s.license               许可证</span><br><span class="line">s.author                作者</span><br><span class="line">s.source                项目的地址</span><br><span class="line">s.social_media_url      社交网址</span><br><span class="line"></span><br><span class="line">s.ios.deployment_target 支持的pod最低版本</span><br><span class="line"></span><br><span class="line">s.source_files          需要包含的源文件</span><br><span class="line"></span><br><span class="line">s.resource_bundles      资源文件（图片等）</span><br><span class="line">// 其他</span><br><span class="line"></span><br><span class="line">s.public_header_files   公开的头文件</span><br><span class="line">s.resources             资源文件</span><br><span class="line">s.dependency            依赖库，不能依赖未发布的库，可以写多个依赖库</span><br></pre></td></tr></tbody></table></figure>
+
+<h5 id="1-2-3-代码提交"><a href="#1-2-3-代码提交" class="headerlink" title="1.2.3 代码提交"></a>1.2.3 代码提交</h5><blockquote>
+<p>完成.podspec 文件配置后，需将代码提交至GitHub，并打上tag，tag必须与.podspec 文件配置中的版本号一致<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/commitAndTag.png"></p>
+</blockquote>
+<blockquote>
+<p>代码提交完成<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/commitSuccess.png"></p>
+</blockquote>
+<h5 id="1-2-4-部署库"><a href="#1-2-4-部署库" class="headerlink" title="1.2.4 部署库"></a>1.2.4 部署库</h5><blockquote>
+<p>1.检查Podspec是否正确</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint</span><br><span class="line">pod spec lint</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>pod lib lint 和 pod spec lint。它们之间的区别在于pod lib lint不访问网络，而是pod spec lint检查外部仓库和相关标签<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/podLint.png"></p>
+</blockquote>
+<blockquote>
+<p>2.发布</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push CNjacobBleManagerKit.podspec</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>如下所示，发布成功<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/trunkPushSuccess.png"></p>
+</blockquote>
+<blockquote>
+<p>验证仓库</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod search CNjacobBleManagerKit</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>可能会出错，如下所示<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/searchFailed.png"></p>
+</blockquote>
+<blockquote>
+<p>解决办法，删除缓存，重新 pod setup ，需要等待一段时间<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/deleteCacheAndSetup.png"></p>
+</blockquote>
+<blockquote>
+<p>再次验证仓库，可以看到已经发布成功<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/searchSuccess.png"></p>
+</blockquote>
+<h2 id="2-如何创建私有库"><a href="#2-如何创建私有库" class="headerlink" title="2. 如何创建私有库"></a>2. 如何创建私有库</h2><h3 id="2-1-创建私有仓库Specs"><a href="#2-1-创建私有仓库Specs" class="headerlink" title="2.1 创建私有仓库Specs"></a>2.1 创建私有仓库Specs</h3><blockquote>
+<p>如果想利用pod安装私有库，那么就得创建和cocoapods官方一样的结构，我们想来看看cocoapods官方的结构，cocoapods所有公共库文件都存放在CocoaPods spec远端文件地址，如果在电脑上安装了cocoapods它会从这个地址clone一份到本地，每次pod update 都会更新这个本地仓库，首先先创建一个私有的库<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/createRepository.png"></p>
+</blockquote>
+<blockquote>
+<p>在终端执行</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add CNjacobSpecs https://github.com/CNjacob/CNjacobSpecs.git</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>然后执行</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/.cocoapods/repos</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>会开看到在repos中创建了一个私有的仓库 CNjacobSpecs ， master 是cocoapods官方的<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/repos.png"></p>
+</blockquote>
+<h3 id="2-2-向私有的-spec-repo-里添加-podspec文件"><a href="#2-2-向私有的-spec-repo-里添加-podspec文件" class="headerlink" title="2.2 向私有的 spec repo 里添加 podspec文件"></a>2.2 向私有的 spec repo 里添加 podspec文件</h3><blockquote>
+<p>1.在1.2中创建了属于自己的Pod，接下来在GitHub上将其修改为私有库<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/privatePod.png"></p>
+</blockquote>
+<blockquote>
+<p>2.通过终端命令 cd 到Pod项目的根目录下，向 CNjacobSpecs 里添加 CNjacobBleManagerKit.podspec 文件</p>
+</blockquote>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/jacob/Desktop/Cocoapods/CNjacobBleManagerKit</span><br><span class="line">pod repo push CNjacobSpecs CNjacobBleManagerKit.podspec</span><br></pre></td></tr></tbody></table></figure>
+<blockquote>
+<p>3.命令执行结束，可看到 repos/CNjacobSpecs 目录下增加了一个 CNjacobBleManagerKit 文件夹，表示添加成功了<br><img src="/2019/03/27/2019-03-27-iOS-CreateMyPod/pushToCNjacobSpecsSuccess.png"></p>
+</blockquote>
+</body></html>
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2019/03/27/2019-03-27-Notes-HexoShowImg/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo图片显示</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2019/03/27/2019-03-27-iOS-LearnCocoapods/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Cocoapods安装及使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Jacob Chen</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
